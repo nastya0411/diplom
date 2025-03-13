@@ -56,17 +56,17 @@ class Order extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'user_id' => 'User ID',
-            'product_id' => 'Product ID',
-            'total_price' => 'Total Price',
-            'status_id' => 'Status ID',
-            'address' => 'Address',
-            'phone' => 'Phone',
-            'created_at' => 'Created At',
-            'date' => 'Date',
-            'time' => 'Time',
-            'other_reason' => 'Other Reason',
+            'id' => 'Номер заявки',
+            'address' => 'Адрес',
+            'phone' => 'Телефон',
+            'created_at' => 'Время создания заказа',
+            'date' => 'Дата получения заказа',
+            'time' => 'Время получения заказа',
+            'product_id' => 'Товар',
+            'total_price' => 'Итоговая цена заказа',
+            'status_id' => 'Статус',
+            'other_reason' => 'Причина отмены заказа',
+            'user_id' => 'Клиент',
         ];
     }
 

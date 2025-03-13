@@ -58,6 +58,7 @@ $config = [
     'modules' => [
         'account' => [
             'class' => 'app\modules\account\Module',
+            'defaultRoute' => 'order/index' //controller/action
         ],
     ],
 ];
