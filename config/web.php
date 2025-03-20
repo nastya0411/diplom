@@ -44,14 +44,13 @@ $config = [
             ],
         ],
         'db' => $db,
-     
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => [],
         ],
-    
+
     ],
     'params' => $params,
 
@@ -59,6 +58,10 @@ $config = [
         'account' => [
             'class' => 'app\modules\account\Module',
             'defaultRoute' => 'order/index' //controller/action
+        ],
+        'dmf' => [
+            'class' => 'app\modules\dmf\Module',
+            'defaultRoute' => 'notes'
         ],
     ],
 ];

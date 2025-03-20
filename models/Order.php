@@ -9,7 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property int $user_id
- * @property int $product_id
+ * @property int $product_category_id
  * @property float $total_price
  * @property int $status_id
  * @property string $address
@@ -19,7 +19,7 @@ use Yii;
  * @property string $time
  * @property string $other_reason
  *
- * @property Product $product
+ * @property ProductCategory $productCategory
  * @property Status $status
  * @property User $user
  */
@@ -39,14 +39,14 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'product_id', 'total_price', 'status_id', 'address', 'phone', 'date', 'time', 'other_reason'], 'required'],
-            [['user_id', 'product_id', 'status_id'], 'integer'],
+            [['user_id', 'product_category_id', 'total_price', 'status_id', 'address', 'phone', 'date', 'time', 'other_reason'], 'required'],
+            [['user_id', 'product_category_id', 'status_id'], 'integer'],
             [['total_price'], 'number'],
             [['created_at', 'date', 'time'], 'safe'],
             [['address', 'phone', 'other_reason'], 'string', 'max' => 255],
-            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::class, 'targetAttribute' => ['product_id' => 'id']],
             [['status_id'], 'exist', 'skipOnError' => true, 'targetClass' => Status::class, 'targetAttribute' => ['status_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
+            [['product_category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductCategory::class, 'targetAttribute' => ['product_category_id' => 'id']],
         ];
     }
 
@@ -56,28 +56,28 @@ class Order extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Номер заявки',
-            'address' => 'Адрес',
-            'phone' => 'Телефон',
-            'created_at' => 'Время создания заказа',
-            'date' => 'Дата получения заказа',
-            'time' => 'Время получения заказа',
-            'product_id' => 'Товар',
-            'total_price' => 'Итоговая цена заказа',
-            'status_id' => 'Статус',
-            'other_reason' => 'Причина отмены заказа',
-            'user_id' => 'Клиент',
+            'id' => 'ID',
+            'user_id' => 'User ID',
+            'product_category_id' => 'Product Category ID',
+            'total_price' => 'Total Price',
+            'status_id' => 'Status ID',
+            'address' => 'Address',
+            'phone' => 'Phone',
+            'created_at' => 'Created At',
+            'date' => 'Date',
+            'time' => 'Time',
+            'other_reason' => 'Other Reason',
         ];
     }
 
     /**
-     * Gets query for [[Product]].
+     * Gets query for [[ProductCategory]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProduct()
+    public function getProductCategory()
     {
-        return $this->hasOne(Product::class, ['id' => 'product_id']);
+        return $this->hasOne(ProductCategory::class, ['id' => 'product_category_id']);
     }
 
     /**

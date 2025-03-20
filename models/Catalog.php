@@ -8,9 +8,9 @@ use Yii;
  * This is the model class for table "catalog".
  *
  * @property int $id
- * @property int $product_id
+ * @property int $product_category_id
  *
- * @property Product $product
+ * @property ProductCategory $productCategory
  */
 class Catalog extends \yii\db\ActiveRecord
 {
@@ -28,9 +28,9 @@ class Catalog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['product_id'], 'required'],
-            [['product_id'], 'integer'],
-            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::class, 'targetAttribute' => ['product_id' => 'id']],
+            [['product_category_id'], 'required'],
+            [['product_category_id'], 'integer'],
+            [['product_category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductCategory::class, 'targetAttribute' => ['product_category_id' => 'id']],
         ];
     }
 
@@ -41,17 +41,17 @@ class Catalog extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'product_id' => 'Product ID',
+            'product_category_id' => 'Product Category ID',
         ];
     }
 
     /**
-     * Gets query for [[Product]].
+     * Gets query for [[ProductCategory]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProduct()
+    public function getProductCategory()
     {
-        return $this->hasOne(Product::class, ['id' => 'product_id']);
+        return $this->hasOne(ProductCategory::class, ['id' => 'product_category_id']);
     }
 }

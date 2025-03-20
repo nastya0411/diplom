@@ -5,21 +5,21 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "role".
+ * This is the model class for table "notes".
  *
  * @property int $id
  * @property string $title
  *
- * @property User[] $users
+ * @property NotesProp[] $notesProps
  */
-class Role extends \yii\db\ActiveRecord
+class Notes extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'role';
+        return 'notes';
     }
 
     /**
@@ -45,12 +45,12 @@ class Role extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Users]].
+     * Gets query for [[NotesProps]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getUsers()
+    public function getNotesProps()
     {
-        return $this->hasMany(User::class, ['role_id' => 'id']);
+        return $this->hasMany(NotesProp::class, ['notes_id' => 'id']);
     }
 }
