@@ -49,7 +49,7 @@ let notesCount = $('#block-props').find('.notes-props').length;
         const notesProp = `notesprop-${notesCount}-value`;                
         $('#form-notes').yiiActiveForm('add',
                         {"id":notesProp,
-                        "name":`[${notesCount}]value`,"container":`.field-${notesCount}`,
+                        "name":`[${notesCount}]value`,"container":`.field-${notesProp}`,
                         "input":`#${notesProp}`,"error":".invalid-feedback",
                         "validate":function (attribute, value, messages, deferred, $form)
                          {yii.validation.required(value, messages, {"message":"Необходимо заполнить «Value»."})

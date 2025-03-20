@@ -63,6 +63,11 @@ $config = [
             'class' => 'app\modules\dmf\Module',
             'defaultRoute' => 'notes'
         ],
+
+            'category' => [
+                'class' => 'app\modules\category\Module',
+                'defaultRoute' => 'category'
+            ],
     ],
 ];
 

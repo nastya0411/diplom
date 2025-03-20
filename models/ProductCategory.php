@@ -12,7 +12,6 @@ use Yii;
  * @property int $category_id
  *
  * @property Catalog[] $catalogs
- * @property Category $category
  * @property Order[] $orders
  * @property ProductNotes $productNotes
  */
@@ -35,7 +34,6 @@ class ProductCategory extends \yii\db\ActiveRecord
             [['product_notes_id', 'category_id'], 'required'],
             [['product_notes_id', 'category_id'], 'integer'],
             [['product_notes_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductNotes::class, 'targetAttribute' => ['product_notes_id' => 'id']],
-            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
 
@@ -59,16 +57,6 @@ class ProductCategory extends \yii\db\ActiveRecord
     public function getCatalogs()
     {
         return $this->hasMany(Catalog::class, ['product_category_id' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Category]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCategory()
-    {
-        return $this->hasOne(Category::class, ['id' => 'category_id']);
     }
 
     /**
